@@ -1,9 +1,12 @@
 package com.example.manvi.restfulwebservices.User;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+@JsonFilter("userFilter") // required for dynamic filtering
 public class User {
 
     private Integer id;

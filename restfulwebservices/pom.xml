@@ -38,6 +38,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+<!--		hal explorer is used to explore the application endpoints-->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-explorer</artifactId>
+		</dependency>
 <!--		to support the response in the xml format-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>

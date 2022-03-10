@@ -1,16 +1,22 @@
 package com.example.manvi.restfulwebservices.User;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Filter;
 
 import com.example.manvi.restfulwebservices.User.Exception.UserNotFoundException;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -83,5 +89,31 @@ public class UserResource {
     public String usersInternationalized() {
         return messageSource
                 .getMessage("good.morning.message", null, "Default Message", LocaleContextHolder.getLocale());
+    }
+
+    @GetMapping("/filtering")
+    //want to send only id and name.
+    public MappingJacksonValue retrieveSomeUserValues() {
+        User user = new User(555, "Manvi", new Date());
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(user);
+        mappingJacksonValue.setFilters(getFilteredValues("name", "id"));
+
+        return mappingJacksonValue;
+    }
+
+    @GetMapping("/filtering-list")
+    //want to send only name and birthdate
+    public MappingJacksonValue retrieveListOfUsers() {
+        List<User> users = service.findAll();
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(users);
+        mappingJacksonValue.setFilters(getFilteredValues("name", "birthDate"));
+
+        return mappingJacksonValue;
+    }
+
+    private FilterProvider getFilteredValues(String... strings) {
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept(strings);
+        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("userFilter", filter);
+        return filterProvider;
     }
 }
