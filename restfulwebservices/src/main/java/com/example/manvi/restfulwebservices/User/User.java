@@ -2,13 +2,19 @@ package com.example.manvi.restfulwebservices.User;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-@JsonFilter("userFilter") // required for dynamic filtering
+//@JsonFilter("userFilter") // required for dynamic filtering
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Size(min = 2, message = "Name should have atleast 2 characters")
