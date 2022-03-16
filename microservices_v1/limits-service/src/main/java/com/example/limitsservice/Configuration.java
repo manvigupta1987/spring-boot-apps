@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("limits-service") // this is to read anything in the application.properties starting with limits-service name
+@ConfigurationProperties("limits-service") // this is to read anything in the bootstrap.properties starting with limits-service name
 public class Configuration {
     private int minimum;
     private int maximum;
