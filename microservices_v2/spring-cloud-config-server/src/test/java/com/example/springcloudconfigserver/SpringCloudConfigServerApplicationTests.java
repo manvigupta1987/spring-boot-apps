@@ -1,10 +1,10 @@
-package com.example.netflixzuulapigateway;
+package com.example.springcloudconfigserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NetflixZuulApiGatewayApplicationTests {
+class SpringCloudConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {
