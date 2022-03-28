@@ -18,17 +18,20 @@ public class CurrencyExchangeController {
 	@Autowired
 	private Environment environment;
 	
-//	@Autowired
-//	private ExchangeValueRepository repository;
+	@Autowired
+	private CurrencyExchangeRepository repository;
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue retrieveExchangeValue
 		(@PathVariable String from, @PathVariable String to){
 		
-//		ExchangeValue exchangeValue =
-//				repository.findByFromAndTo(from, to);
+		ExchangeValue exchangeValue =
+				repository.findByFromAndTo(from, to);
 
-		ExchangeValue exchangeValue = new ExchangeValue(1l, from, to, BigDecimal.valueOf(75));
+		if (exchangeValue == null) {
+			throw new RuntimeException("Unable to find data for" + from + " to " + to);
+		}
+
 		String port = environment.getProperty("local.server.port");
 		exchangeValue.setEnvironment(port);
 		
