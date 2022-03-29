@@ -3,9 +3,10 @@ package com.example.currencyconversionservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-//@EnableFeignClients("com.example.currencyconversionservice") // package that you want figen to scan
+@EnableFeignClients // package that you want figen to scan
 //@EnableDiscoveryClient
 public class CurrencyConversionServiceApplication {
 
