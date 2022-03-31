@@ -3,11 +3,12 @@ package com.example.currencyconversionservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients // package that you want figen to scan
-//@EnableDiscoveryClient
+@EnableEurekaClient
 public class CurrencyConversionServiceApplication {
 
 	public static void main(String[] args) {
