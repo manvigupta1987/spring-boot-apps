@@ -6,22 +6,25 @@ public class CurrencyConversion {
     private Long id;
     private String from;
     private String to;
+
+
+
     private BigDecimal conversionMultiple;
     private BigDecimal quantity;
     private BigDecimal calculatedAmount;
-    private int port;
+    private String environment;
 
     public CurrencyConversion() {
     }
 
-    public CurrencyConversion(Long id, String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal calculatedAmount, int port) {
+    public CurrencyConversion(Long id, String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal calculatedAmount, String port) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.conversionMultiple = conversionMultiple;
         this.quantity = quantity;
         this.calculatedAmount = calculatedAmount;
-        this.port = port;
+        this.environment = port;
     }
 
     public Long getId() {
@@ -72,11 +75,11 @@ public class CurrencyConversion {
         this.calculatedAmount = calculatedAmount;
     }
 
-    public int getPort() {
-        return port;
+    public String getEnvironment() {
+        return environment;
     }
 
-    public void setPort(int port) {
-        this.port = port;
+    public void setEnvironment(String environment) {
+        this.environment = environment;
     }
 }

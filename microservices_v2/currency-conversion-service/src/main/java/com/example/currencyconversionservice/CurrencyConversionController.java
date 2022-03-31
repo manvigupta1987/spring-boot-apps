@@ -24,6 +24,6 @@ public class CurrencyConversionController {
         CurrencyConversion response = proxy.retrieveExchangeValue(from, to);
         logger.info("{}", response);
         return new CurrencyConversion(response.getId(), from, to, response.getConversionMultiple(),
-                quantity, quantity.multiply(response.getConversionMultiple()), response.getPort());
+                quantity, quantity.multiply(response.getConversionMultiple()), response.getEnvironment());
     }
 }
